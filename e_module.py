@@ -14,7 +14,7 @@ class e_main():
         
         #YELLOW
         sql1=\
-            "SELECT xxx,xxx,xxx,xxx FROM xxx WHERE STCK_NM NOT LIKE 'xx' GROUP BY xx HAVING MAX(xx);"
+            "SELECT xxx,xxx,xxx,xxx FROM xxx WHERE xxx NOT LIKE 'xx' GROUP BY xx HAVING MAX(xx);"
 
         #NAVY
         sql2=\
