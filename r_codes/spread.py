@@ -14,9 +14,9 @@ class spread_data():
     def load_decide(self):
         #데이터 조회해서 업데이트 여부 결정
         parsing=False
-        current_maxdate=RDS_Link().mysql_load("SELECT MAX(CRI_YMD) FROM SPREAD").iloc[0][0]
+        current_maxdate=RDS_Link().mysql_load("SELECT MAX(CRI_YMD) FROM  xxx").iloc[0][0]
         if current_maxdate==None:
-            current_maxdate='20221231'
+            current_maxdate='xxx'
         today=datetime.date.today()
         if int(today.year)>=int(current_maxdate[:3])+2: #돌리는 날짜가 마지막 기재 연도보다 2 큰 경우
             parsing=True
@@ -28,14 +28,14 @@ class spread_data():
         df=pd.read_html(res)[0]
         df=df[df.columns[:4]]
         df=pd.DataFrame(df.set_index('등급').stack()).reset_index()
-        df.columns=['RATE','CRI_YMD', 'RATIO']
-        df['CRI_YMD']=df['CRI_YMD'].apply(lambda x: x.replace(".",""))
-        df['CRI_YMD']=df['CRI_YMD'].apply(lambda x: int(x))
-        df=df.loc[df['CRI_YMD']>date]
-        sql="INSERT INTO SPREAD VALUES (%s, %s, %s)"
+        df.columns=['xxx','xxx', 'xxx']
+        df['xxx']=df['xxx'].apply(lambda x: x.replace(".",""))
+        df['xxx']=df['xxx'].apply(lambda x: int(x))
+        df=df.loc[df['xxx']>date]
+        sql="INSERT INTO xxx VALUES (%s, %s, %s)"
         for i in range(len(df)):
             row=df.iloc[i]
-            RDS_Link().mysql_execute(sql=sql, val= (row['CRI_YMD'], row['RATE'], row['RATIO']))
+            RDS_Link().mysql_execute(sql=sql, val= (row['xxx'], row['xxx'], row['xxx']))
 
 # if __name__ == '__main__':   
     # task=spread_data() 
